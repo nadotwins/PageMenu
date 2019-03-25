@@ -85,7 +85,8 @@ open class CAPSPageMenu: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         controllerArray = viewControllers
-        
+        self.menuScrollView.delaysContentTouches = false
+        self.controllerScrollView.delaysContentTouches = false
         self.view.frame = frame
     }
     
@@ -241,7 +242,7 @@ extension CAPSPageMenu {
         let oldCurrentOrientationIsPortrait : Bool = currentOrientationIsPortrait
         
         //if UIDevice.current.orientation != UIDeviceOrientation.unknown {
-            currentOrientationIsPortrait = UIApplication.shared.statusBarOrientation
+            currentOrientationIsPortrait = UIApplication.shared.statusBarOrientation.isPortrait
         //}
         
         if (oldCurrentOrientationIsPortrait && UIApplication.shared.statusBarOrientation.isLandscape) || (!oldCurrentOrientationIsPortrait && (UIApplication.shared.statusBarOrientation.isPortrait)) {
